@@ -1,7 +1,6 @@
 # TodoApp
 ## Basic Todo Application
-
-Create a list of tasks to complete by doing the following...
+### Create a list of tasks to complete by doing the following...
 
 Enter task name in textbox
 
@@ -20,7 +19,7 @@ Use "Delete" button to remove task from list
 Task items will change color based on state of task
 
 
-## Application Information
+### Application Information
 
 Language: Python
 
