@@ -4,41 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>David's To Do App</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="../static/styles.css">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
 </head>
 
 <body>
-    <div style="margin-top: 50px;" class="ui container">
-        <h1 class="ui center aligned header">To Do App</h1>
 
-        <form class="ui form" action="/add" method="post">
+    <div style="margin-top: 60px;">
+        <h1>David's To Do App</h1>
+
+        <form action="/add" method="post">
             <div class="field">
-                <label>Todo Title</label>
-                <input type="text" name="title" placeholder="Enter Todo..."><br>
+                <!--<label>Task Name</label>-->
+                <input type="text" name="title" placeholder="Enter Task Name..."><br>
             </div>
-            <button class="ui blue button" type="submit">Add</button>
+            <button type="submit">Add</button>
         </form>
 
         <hr>
 
         {% for todo in todo_list %}
-        <div class="ui segment">
-            <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
-
+        <div class="entry">
             {% if todo.complete == False %}
-            <span class="ui gray label">Not Complete</span>
+            <p class="notcomplete">{{todo.id }} | {{ todo.title }}</p>
+            <a class="delbtn" href="/delete/{{ todo.id }}">Delete</a>
+            <a class="completebtn" href="/update/{{ todo.id }}">Mark Complete</a>
             {% else %}
-            <span class="ui green label">Completed</span>
+            <p class="complete">{{todo.id }} | {{ todo.title }}</p>
+            <a class="delbtn" href="/delete/{{ todo.id }}">Delete</a>
+            <a class="notcompletebtn" href="/update/{{ todo.id }}">Mark Not Complete</a>
             {% endif %}
-
-            <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
-            <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
         </div>
         {% endfor %}
     </div>
+
 </body>
 
 </html>
