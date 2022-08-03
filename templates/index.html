@@ -22,6 +22,8 @@
                 <input type="text" name="title" placeholder="Enter Task Name..."><br>
             </div>
             <button type="submit">Add</button>
+            <input type="checkbox" id="priorityCheck" name="priorityCheck">
+            <p class="priorityLabel" for="priorityCheck">Make Top Priority</p>
         </form>
 
         <hr>
@@ -29,11 +31,11 @@
         {% for todo in todo_list %}
         <div class="entry">
             {% if todo.complete == False %}
-            <p class="notcomplete">{{todo.id }} | {{ todo.title }}</p>
+            <p class="notcomplete">{{todo.number }} | {{ todo.title }}</p>
             <a class="delbtn" href="/delete/{{ todo.id }}">Delete</a>
             <a class="completebtn" href="/update/{{ todo.id }}">Mark Complete</a>
             {% else %}
-            <p class="complete">{{todo.id }} | {{ todo.title }}</p>
+            <p class="complete">{{todo.number }} | {{ todo.title }}</p>
             <a class="delbtn" href="/delete/{{ todo.id }}">Delete</a>
             <a class="notcompletebtn" href="/update/{{ todo.id }}">Mark Not Complete</a>
             {% endif %}
